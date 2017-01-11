@@ -1,0 +1,17 @@
+import paho.mqtt.client as mqtt
+
+
+def on_connect(client, userdata, rc):
+	print "on_connect"
+	client.subscribe("hello/world")
+
+def on_message(client, userdata, msg):
+	print "on_message"
+
+
+client = mqtt.Client()
+client.on_connect = on_connect
+client.on_message = on_message
+
+client.connect('127.0.0.1:1881883)
+client.loop_forever()
